@@ -121,26 +121,44 @@ function toggleAll(){
 async function renderAll(){
   const allView=document.getElementById("allView");
   allView.innerHTML="<p style='opacity:.6;padding:2rem'>Loading all themes...</p>";
-  let html="";
+  const frag=document.createDocumentFragment();
+
   for(const elem of ELEMENTS){
-    html+=`<div class="all-section"><h2 style="color:${P[elem].base}">${P[elem].name}</h2>`;
+    const sec=document.createElement("div");sec.className="all-section";
+    const h2=document.createElement("h2");h2.style.color=P[elem].base;h2.textContent=P[elem].name;
+    sec.appendChild(h2);
+
     for(const season of SEASONS){
       for(const time of["day","night"]){
         let colors=time==="night"?(P._night[elem]?.[season]||nightColors(P[elem][season])):P[elem][season];
-        html+=`<div style="display:inline-flex;flex-direction:column;align-items:center;margin:0 4px 8px;width:62px;font-size:.6rem;padding:4px;border-radius:4px;background:${colors.bg};border:1px solid rgba(0,0,0,.08)">
-          <span style="opacity:.5;margin-bottom:2px">${SICONS[season]}${time==="day"?"☀️":"🌙"}</span>`;
-        for(const icon of ICONS.slice(0,5)){
+        const box=document.createElement("div");
+        Object.assign(box.style,{display:"inline-flex",flexDirection:"column",alignItems:"center",margin:"0 4px 8px",width:80,padding:4,borderRadius:4,background:colors.bg,border:"1px solid rgba(0,0,0,.08)",verticalAlign:"top"});
+        const label=document.createElement("span");
+        Object.assign(label.style,{opacity:.5,marginBottom:2,fontSize:10});
+        label.textContent=`${SICONS[season]}${time==="day"?"☀️":"🌙"}`;
+        box.appendChild(label);
+
+        const row=document.createElement("div");
+        Object.assign(row.style,{display:"flex",flexWrap:"wrap",gap:1,justifyContent:"center"});
+
+        const fetches=ICONS.map(async icon=>{
           try{
             let r=await fetch(`dist/${elem}-${season}-${time}/${icon}.svg`),svg=await r.text();
-            html+=svg.replace('<svg','<svg style="width:20px;height:20px"');
+            let tmp=document.createElement("div");
+            tmp.innerHTML=svg.replace(/\sid="[^"]+"/g,"");
+            let s=tmp.querySelector("svg");
+            if(s){s.removeAttribute("id");s.setAttribute("width","22");s.setAttribute("height","22");s.style.display="block";row.appendChild(s);}
           }catch(e){}
-        }
-        html+=`</div>`;
+        });
+        await Promise.all(fetches);
+        box.appendChild(row);
+        sec.appendChild(box);
       }
     }
-    html+=`</div>`;
+    frag.appendChild(sec);
   }
-  allView.innerHTML=html;
+  allView.innerHTML="";
+  allView.appendChild(frag);
 }
 
 async function downloadAll(){
