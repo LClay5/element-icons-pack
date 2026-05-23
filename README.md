@@ -1,6 +1,8 @@
-# Wave Icons Pack
+# Element Icons Pack
 
 10 wave-themed SVG icons in **5 elements × 4 seasons × day/night** = 400 SVGs.
+
+🌊 Water · 🌍 Earth · 💨 Wind · 🔥 Fire · ✨ Ether
 
 | Element | 🌸 Spring | ☀️ Summer | 🍂 Fall | ❄️ Winter |
 |---------|-----------|-----------|---------|-----------|
@@ -19,7 +21,7 @@ Line, Layered, Circle, Audio Waveform, Sun, Seamless Pattern, Tsunami, Minimal, 
 ## Quick Start
 
 ```
-git clone https://github.com/LClay5/wave-icons-pack.git
+git clone https://github.com/LClay5/element-icons-pack.git
 ```
 
 Open `preview.html` to browse all 40 theme combos.
