@@ -38,8 +38,9 @@ for (const [elem, elemData] of Object.entries(palettes)) {
 }
 
 const names = themeKeys.map(tk => {
-  const [elem, time] = tk.split('-');
-  return { key: tk, element: elem, time, label: `${palettes[elem].name} ${time === 'day' ? 'Day' : 'Night'}` };
+  const [elem, seasonKey] = tk.split('-');
+  const season = palettes[elem][seasonKey];
+  return { key: tk, element: elem, season: seasonKey, label: `${palettes[elem].name} ${season.name}` };
 });
 
 fs.writeFileSync(path.join(distDir, 'themes.json'), JSON.stringify(names, null, 2), 'utf-8');

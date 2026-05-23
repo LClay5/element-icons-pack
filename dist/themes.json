@@ -1,62 +1,122 @@
 [
   {
-    "key": "water-day",
+    "key": "water-spring",
     "element": "water",
-    "time": "day",
-    "label": "Water Day"
+    "season": "spring",
+    "label": "Water Spring"
   },
   {
-    "key": "water-night",
+    "key": "water-summer",
     "element": "water",
-    "time": "night",
-    "label": "Water Night"
+    "season": "summer",
+    "label": "Water Summer"
   },
   {
-    "key": "earth-day",
+    "key": "water-fall",
+    "element": "water",
+    "season": "fall",
+    "label": "Water Fall"
+  },
+  {
+    "key": "water-winter",
+    "element": "water",
+    "season": "winter",
+    "label": "Water Winter"
+  },
+  {
+    "key": "earth-spring",
     "element": "earth",
-    "time": "day",
-    "label": "Earth Day"
+    "season": "spring",
+    "label": "Earth Spring"
   },
   {
-    "key": "earth-night",
+    "key": "earth-summer",
     "element": "earth",
-    "time": "night",
-    "label": "Earth Night"
+    "season": "summer",
+    "label": "Earth Summer"
   },
   {
-    "key": "wind-day",
+    "key": "earth-fall",
+    "element": "earth",
+    "season": "fall",
+    "label": "Earth Fall"
+  },
+  {
+    "key": "earth-winter",
+    "element": "earth",
+    "season": "winter",
+    "label": "Earth Winter"
+  },
+  {
+    "key": "wind-spring",
     "element": "wind",
-    "time": "day",
-    "label": "Wind Day"
+    "season": "spring",
+    "label": "Wind Spring"
   },
   {
-    "key": "wind-night",
+    "key": "wind-summer",
     "element": "wind",
-    "time": "night",
-    "label": "Wind Night"
+    "season": "summer",
+    "label": "Wind Summer"
   },
   {
-    "key": "fire-day",
+    "key": "wind-fall",
+    "element": "wind",
+    "season": "fall",
+    "label": "Wind Fall"
+  },
+  {
+    "key": "wind-winter",
+    "element": "wind",
+    "season": "winter",
+    "label": "Wind Winter"
+  },
+  {
+    "key": "fire-spring",
     "element": "fire",
-    "time": "day",
-    "label": "Fire Day"
+    "season": "spring",
+    "label": "Fire Spring"
   },
   {
-    "key": "fire-night",
+    "key": "fire-summer",
     "element": "fire",
-    "time": "night",
-    "label": "Fire Night"
+    "season": "summer",
+    "label": "Fire Summer"
   },
   {
-    "key": "ether-day",
-    "element": "ether",
-    "time": "day",
-    "label": "Ether Day"
+    "key": "fire-fall",
+    "element": "fire",
+    "season": "fall",
+    "label": "Fire Fall"
   },
   {
-    "key": "ether-night",
+    "key": "fire-winter",
+    "element": "fire",
+    "season": "winter",
+    "label": "Fire Winter"
+  },
+  {
+    "key": "ether-spring",
     "element": "ether",
-    "time": "night",
-    "label": "Ether Night"
+    "season": "spring",
+    "label": "Ether Spring"
+  },
+  {
+    "key": "ether-summer",
+    "element": "ether",
+    "season": "summer",
+    "label": "Ether Summer"
+  },
+  {
+    "key": "ether-fall",
+    "element": "ether",
+    "season": "fall",
+    "label": "Ether Fall"
+  },
+  {
+    "key": "ether-winter",
+    "element": "ether",
+    "season": "winter",
+    "label": "Ether Winter"
   }
 ]

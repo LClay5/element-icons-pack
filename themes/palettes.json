@@ -2,101 +2,181 @@
   "water": {
     "name": "Water",
     "base": "#0d6efd",
-    "day": {
-      "name": "Day",
-      "bg": "#e8f4f8",
-      "c1": "#0d6efd",
-      "c2": "#1a8fe0",
-      "c3": "#6db3f2",
+    "spring": {
+      "name": "Spring",
+      "bg": "#e0f4f4",
+      "c1": "#0ABDE3",
+      "c2": "#40E0D0",
+      "c3": "#7FF5E8",
       "accent": "#f7c948"
     },
-    "night": {
-      "name": "Night",
-      "bg": "#0a1628",
-      "c1": "#1a8fe0",
-      "c2": "#0d6efd",
-      "c3": "#4a9eff",
-      "accent": "#f0e6a0"
+    "summer": {
+      "name": "Summer",
+      "bg": "#e8f4f8",
+      "c1": "#006994",
+      "c2": "#0D6EFD",
+      "c3": "#00BFFF",
+      "accent": "#FFD700"
+    },
+    "fall": {
+      "name": "Fall",
+      "bg": "#e8eef4",
+      "c1": "#4A6FA5",
+      "c2": "#5F9EA0",
+      "c3": "#7DA6C4",
+      "accent": "#C4956A"
+    },
+    "winter": {
+      "name": "Winter",
+      "bg": "#f0f8ff",
+      "c1": "#A8D8EA",
+      "c2": "#6CA6CD",
+      "c3": "#D4EAF7",
+      "accent": "#E0E0E0"
     }
   },
   "earth": {
     "name": "Earth",
     "base": "#8B5E3C",
-    "day": {
-      "name": "Day",
-      "bg": "#f5f0eb",
+    "spring": {
+      "name": "Spring",
+      "bg": "#f4f1e6",
       "c1": "#8B5E3C",
-      "c2": "#A67B5B",
-      "c3": "#C4A882",
-      "accent": "#5D8A3C"
+      "c2": "#4C8C28",
+      "c3": "#7CB342",
+      "accent": "#FFD93D"
     },
-    "night": {
-      "name": "Night",
-      "bg": "#1a1410",
-      "c1": "#A67B5B",
-      "c2": "#8B5E3C",
-      "c3": "#C4A882",
-      "accent": "#7BA85C"
+    "summer": {
+      "name": "Summer",
+      "bg": "#f5eddd",
+      "c1": "#8B4513",
+      "c2": "#2D5A1E",
+      "c3": "#6B8E23",
+      "accent": "#FF8C00"
+    },
+    "fall": {
+      "name": "Fall",
+      "bg": "#f4e8d8",
+      "c1": "#A0522D",
+      "c2": "#D2691E",
+      "c3": "#B22222",
+      "accent": "#FFA500"
+    },
+    "winter": {
+      "name": "Winter",
+      "bg": "#f0ede8",
+      "c1": "#C4A882",
+      "c2": "#9E9E9E",
+      "c3": "#B0C4DE",
+      "accent": "#D3D3D3"
     }
   },
   "wind": {
     "name": "Wind",
     "base": "#4FC3F7",
-    "day": {
-      "name": "Day",
+    "spring": {
+      "name": "Spring",
+      "bg": "#f0faff",
+      "c1": "#81D4FA",
+      "c2": "#B3E5FC",
+      "c3": "#E1F5FE",
+      "accent": "#FFFFFF"
+    },
+    "summer": {
+      "name": "Summer",
       "bg": "#e8f4fd",
       "c1": "#4FC3F7",
-      "c2": "#81D4FA",
-      "c3": "#B3E5FC",
-      "accent": "#ffffff"
-    },
-    "night": {
-      "name": "Night",
-      "bg": "#0d1b2a",
-      "c1": "#4FC3F7",
-      "c2": "#29B6F6",
+      "c2": "#0288D1",
       "c3": "#81D4FA",
-      "accent": "#e0e0e0"
+      "accent": "#FFFFFF"
+    },
+    "fall": {
+      "name": "Fall",
+      "bg": "#eceff1",
+      "c1": "#78909C",
+      "c2": "#90A4AE",
+      "c3": "#B0BEC5",
+      "accent": "#E0E0E0"
+    },
+    "winter": {
+      "name": "Winter",
+      "bg": "#f5fafc",
+      "c1": "#B3E5FC",
+      "c2": "#E1F5FE",
+      "c3": "#F5F5F5",
+      "accent": "#ECEFF1"
     }
   },
   "fire": {
     "name": "Fire",
     "base": "#FF4500",
-    "day": {
-      "name": "Day",
-      "bg": "#fff5f0",
-      "c1": "#FF4500",
-      "c2": "#FF6B35",
-      "c3": "#FFA070",
+    "spring": {
+      "name": "Spring",
+      "bg": "#fff8f0",
+      "c1": "#FF8A65",
+      "c2": "#FFAB91",
+      "c3": "#FFCC80",
       "accent": "#FFD700"
     },
-    "night": {
-      "name": "Night",
-      "bg": "#1a0808",
-      "c1": "#FF4500",
-      "c2": "#CC3700",
+    "summer": {
+      "name": "Summer",
+      "bg": "#fff5f0",
+      "c1": "#D32F2F",
+      "c2": "#FF4500",
       "c3": "#FF6B35",
-      "accent": "#FFB347"
+      "accent": "#FFD700"
+    },
+    "fall": {
+      "name": "Fall",
+      "bg": "#fce8d5",
+      "c1": "#FF6F00",
+      "c2": "#D84315",
+      "c3": "#B71C1C",
+      "accent": "#FFB300"
+    },
+    "winter": {
+      "name": "Winter",
+      "bg": "#fcecec",
+      "c1": "#EF9A9A",
+      "c2": "#E57373",
+      "c3": "#FFCDD2",
+      "accent": "#F5F5F5"
     }
   },
   "ether": {
     "name": "Ether",
-    "base": "#ffffff",
-    "day": {
-      "name": "Day",
-      "bg": "#ffffff",
-      "c1": "#333333",
-      "c2": "#666666",
-      "c3": "#999999",
+    "base": "#9E9E9E",
+    "spring": {
+      "name": "Spring",
+      "bg": "#fafafa",
+      "c1": "#757575",
+      "c2": "#A5D6A7",
+      "c3": "#BDBDBD",
+      "accent": "#81C784"
+    },
+    "summer": {
+      "name": "Summer",
+      "bg": "#FFFFFF",
+      "c1": "#212121",
+      "c2": "#616161",
+      "c3": "#9E9E9E",
       "accent": "#000000"
     },
-    "night": {
-      "name": "Night",
-      "bg": "#0a0a0a",
-      "c1": "#ffffff",
-      "c2": "#cccccc",
-      "c3": "#999999",
-      "accent": "#ffffff"
+    "fall": {
+      "name": "Fall",
+      "bg": "#f5f0eb",
+      "c1": "#5D4037",
+      "c2": "#8D6E63",
+      "c3": "#BCAAA4",
+      "accent": "#A1887F"
+    },
+    "winter": {
+      "name": "Winter",
+      "bg": "#fcfcfc",
+      "c1": "#E0E0E0",
+      "c2": "#BDBDBD",
+      "c3": "#F5F5F5",
+      "accent": "#90CAF9"
     }
   }
 }
