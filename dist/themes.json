@@ -1,0 +1,62 @@
+[
+  {
+    "key": "water-day",
+    "element": "water",
+    "time": "day",
+    "label": "Water Day"
+  },
+  {
+    "key": "water-night",
+    "element": "water",
+    "time": "night",
+    "label": "Water Night"
+  },
+  {
+    "key": "earth-day",
+    "element": "earth",
+    "time": "day",
+    "label": "Earth Day"
+  },
+  {
+    "key": "earth-night",
+    "element": "earth",
+    "time": "night",
+    "label": "Earth Night"
+  },
+  {
+    "key": "wind-day",
+    "element": "wind",
+    "time": "day",
+    "label": "Wind Day"
+  },
+  {
+    "key": "wind-night",
+    "element": "wind",
+    "time": "night",
+    "label": "Wind Night"
+  },
+  {
+    "key": "fire-day",
+    "element": "fire",
+    "time": "day",
+    "label": "Fire Day"
+  },
+  {
+    "key": "fire-night",
+    "element": "fire",
+    "time": "night",
+    "label": "Fire Night"
+  },
+  {
+    "key": "ether-day",
+    "element": "ether",
+    "time": "day",
+    "label": "Ether Day"
+  },
+  {
+    "key": "ether-night",
+    "element": "ether",
+    "time": "night",
+    "label": "Ether Night"
+  }
+]

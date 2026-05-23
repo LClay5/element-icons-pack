@@ -1,32 +1,43 @@
 # Wave Icons Pack
 
-A collection of 10 scalable vector wave-themed icons and patterns. Perfect for websites, apps, presentations, and merchandise.
+A collection of 10 scalable vector wave-themed icons, each available in **5 elemental themes × 2 times of day** = 100 total SVGs. Perfect for websites, apps, presentations, and merchandise.
 
-## Includes
+## Themes
 
-- Wave Line
-- Layered Waves
-- Wave Circle / Badge
-- Audio Waveform
-- Wave & Sun
-- Seamless Pattern
-- Tsunami
-- Minimal Wave
-- Wave Mountains
-- Wave Spiral
+| Element | Day | Night |
+|---------|-----|-------|
+| 🌊 Water | Light ocean blues | Deep navy blues |
+| 🌍 Earth | Warm earth tones | Dark soil tones |
+| 💨 Wind | Bright sky blues | Storm twilight blues |
+| 🔥 Fire | Warm orange-reds | Deep ember reds |
+| ✨ Ether | White/silver with dark | Dark with white |
+
+## Icons
+
+- Wave Line, Layered, Circle, Audio Waveform, Wave & Sun
+- Seamless Pattern, Tsunami, Minimal, Wave Mountains, Wave Spiral
 
 ## Format
 
-- SVG — scalable to any size, editable in Inkscape, Illustrator, or any vector editor
-- 100×100 viewBox (easy to resize)
-- Monochromatic blue palette (easily recolorable)
+- SVG — scalable to any size, 100×100 viewBox
+- Edit in Inkscape to further customize
+- 5 color tokens per theme: `{{c1}}`–`{{c3}}`, `{{bg}}`, `{{accent}}`
 
 ## Usage
 
-1. Download individual SVGs or clone the repo
-2. Open in Inkscape to customize colors
-3. Export as PNG at any resolution
-4. Use in web, print, or merchandise
+```
+git clone https://github.com/LClay5/wave-icons-pack.git
+```
+
+Open `preview.html` to browse all themes. Open any SVG in Inkscape to edit.
+
+## Build
+
+Edit `src/*.svg` templates or `themes/palettes.json`, then:
+
+```
+node build.js
+```
 
 ## License
 

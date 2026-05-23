@@ -1,24 +1,118 @@
-<html><head><title>Wave Icons Preview</title><style>
-body{font-family:sans-serif;background:#f5f5f5;padding:2em}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1em}
-.card{background:#fff;border-radius:8px;padding:1em;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.1)}
-.card svg{width:80px;height:80px}
-.card p{margin:.5em 0 0;font-size:.85em;color:#555}
-h1{color:#0d6efd}
-</style></head><body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wave Icons Pack — Preview</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,sans-serif;padding:2rem;min-height:100vh;transition:background .3s,color .3s}
+h1{font-size:1.8rem;margin-bottom:.3rem}
+.sub{opacity:.7;margin-bottom:2rem}
+.controls{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.theme-btn{padding:.5rem 1rem;border:2px solid;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s;background:transparent}
+.theme-btn:hover{transform:translateY(-1px)}
+.theme-btn.active{border-width:3px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.time-toggle{display:flex;gap:0;margin-bottom:2rem}
+.time-btn{padding:.5rem 1.5rem;border:2px solid;cursor:pointer;font-weight:600;transition:.15s;background:transparent}
+.time-btn:first-child{border-radius:8px 0 0 8px}
+.time-btn:last-child{border-radius:0 8px 8px 0}
+.time-btn.active{color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
+.card{background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;text-align:center;border:1px solid;transition:.2s;backdrop-filter:blur(4px)}
+.card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.card svg{width:72px;height:72px;display:block;margin:0 auto}
+.card p{margin-top:.6rem;font-size:.8rem;font-weight:500;opacity:.85}
+.element-label{grid-column:1/-1;font-size:1.2rem;font-weight:700;margin-top:.5rem;margin-bottom:.3rem;opacity:.6}
+.palette-dots{display:flex;gap:4px;justify-content:center;margin-top:.4rem}
+.dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
+</style>
+</head>
+<body>
 <h1>🌊 Wave Icons Pack</h1>
-<div class="grid">
-<div class="card"><img src="wave-line.svg"><p>Wave Line</p></div>
-<div class="card"><img src="wave-layered.svg"><p>Layered Waves</p></div>
-<div class="card"><img src="wave-circle.svg"><p>Wave Circle</p></div>
-<div class="card"><img src="wave-audio.svg"><p>Audio Wave</p></div>
-<div class="card"><img src="wave-sun.svg"><p>Wave & Sun</p></div>
-<div class="card"><img src="wave-seamless.svg"><p>Seamless Pattern</p></div>
-<div class="card"><img src="wave-tsunami.svg"><p>Tsunami</p></div>
-<div class="card"><img src="wave-minimal.svg"><p>Minimal Wave</p></div>
-<div class="card"><img src="wave-mountains.svg"><p>Wave Mountains</p></div>
-<div class="card"><img src="wave-spiral.svg"><p>Wave Spiral</p></div>
+<p class="sub">5 elements × 2 times of day × 10 icons = 100 SVGs</p>
+
+<div class="time-toggle" id="timeToggle">
+  <button class="time-btn active" data-time="day">☀️ Day</button>
+  <button class="time-btn" data-time="night">🌙 Night</button>
 </div>
-<p style="color:#888;margin-top:2em">Open each .svg in Inkscape to recolor and customize.<br>
-Right-click → Save as to download individual icons.</p>
-</body></html>
+<div class="controls" id="themeControls"></div>
+<div class="grid" id="iconGrid"></div>
+
+<script>
+const THEMES = {
+  water:{name:"Water",base:"#0d6efd",day:{bg:"#e8f4f8",c1:"#0d6efd",c2:"#1a8fe0",c3:"#6db3f2",accent:"#f7c948"},night:{bg:"#0a1628",c1:"#1a8fe0",c2:"#0d6efd",c3:"#4a9eff",accent:"#f0e6a0"}},
+  earth:{name:"Earth",base:"#8B5E3C",day:{bg:"#f5f0eb",c1:"#8B5E3C",c2:"#A67B5B",c3:"#C4A882",accent:"#5D8A3C"},night:{bg:"#1a1410",c1:"#A67B5B",c2:"#8B5E3C",c3:"#C4A882",accent:"#7BA85C"}},
+  wind:{name:"Wind",base:"#4FC3F7",day:{bg:"#e8f4fd",c1:"#4FC3F7",c2:"#81D4FA",c3:"#B3E5FC",accent:"#ffffff"},night:{bg:"#0d1b2a",c1:"#4FC3F7",c2:"#29B6F6",c3:"#81D4FA",accent:"#e0e0e0"}},
+  fire:{name:"Fire",base:"#FF4500",day:{bg:"#fff5f0",c1:"#FF4500",c2:"#FF6B35",c3:"#FFA070",accent:"#FFD700"},night:{bg:"#1a0808",c1:"#FF4500",c2:"#CC3700",c3:"#FF6B35",accent:"#FFB347"}},
+  ether:{name:"Ether",base:"#ffffff",day:{bg:"#ffffff",c1:"#333333",c2:"#666666",c3:"#999999",accent:"#000000"},night:{bg:"#0a0a0a",c1:"#ffffff",c2:"#cccccc",c3:"#999999",accent:"#ffffff"}}
+};
+const ICONS = ["wave-line","wave-layered","wave-circle","wave-audio","wave-sun","wave-seamless","wave-tsunami","wave-minimal","wave-mountains","wave-spiral"];
+const NAMES = {"wave-line":"Line","wave-layered":"Layered","wave-circle":"Circle","wave-audio":"Audio","wave-sun":"Sun","wave-seamless":"Pattern","wave-tsunami":"Tsunami","wave-minimal":"Minimal","wave-mountains":"Mountains","wave-spiral":"Spiral"};
+const ELEMENTS = ["water","earth","wind","fire","ether"];
+
+let currentElem = "water";
+let currentTime = "day";
+
+const timeBtns = document.querySelectorAll(".time-btn");
+timeBtns.forEach(b => b.addEventListener("click",()=>{
+  timeBtns.forEach(x=>x.classList.remove("active"));
+  b.classList.add("active");
+  currentTime = b.dataset.time;
+  render();
+}));
+
+const ctrl = document.getElementById("themeControls");
+ELEMENTS.forEach(e=>{
+  const btn = document.createElement("button");
+  btn.className = "theme-btn" + (e===currentElem?" active":"");
+  btn.textContent = THEMES[e].name;
+  btn.style.borderColor = THEMES[e].base;
+  if(e===currentElem) btn.style.background = THEMES[e].base, btn.style.color = "#fff";
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".theme-btn").forEach(x=>{x.classList.remove("active");x.style.background="";x.style.color=""});
+    btn.classList.add("active");btn.style.background=THEMES[e].base;btn.style.color="#fff";
+    currentElem=e;render();
+  });
+  ctrl.appendChild(btn);
+});
+
+function tokenize(svg,colors){
+  return svg.replace(/\{\{(\w+)\}\}/g,(_,t)=>colors[t]||t);
+}
+
+function render(){
+  const grid = document.getElementById("iconGrid");
+  const colors = THEMES[currentElem][currentTime];
+  const bg = colors.bg;
+  const textColor = currentTime==="night"?"#eee":"#222";
+  const cardBg = currentTime==="night"?"rgba(255,255,255,.06)":"rgba(0,0,0,.03)";
+  const cardBorder = currentTime==="night"?"rgba(255,255,255,.1)":"rgba(0,0,0,.08)";
+  document.body.style.background = bg;
+  document.body.style.color = textColor;
+
+  grid.innerHTML = `<div class="element-label" style="color:${THEMES[currentElem].base}">${THEMES[currentElem].name} — ${currentTime==="day"?"☀️ Day":"🌙 Night"}</div>`;
+
+  ICONS.forEach(icon=>{
+    fetch(`dist/${currentElem}-${currentTime}/${icon}.svg`).then(r=>r.text()).then(svg=>{
+      const card = document.createElement("div");
+      card.className = "card";
+      card.style.background = cardBg;
+      card.style.borderColor = cardBorder;
+      card.innerHTML = svg + `<p>${NAMES[icon]||icon}</p>`;
+      if(icon==="wave-seamless"){
+        const dots = document.createElement("div");dots.className="palette-dots";
+        [colors.c1,colors.c2,colors.c3,colors.accent].forEach(c=>{
+          const d=document.createElement("span");d.className="dot";d.style.background=c;dots.appendChild(d)
+        });
+        card.appendChild(dots);
+      }
+      grid.appendChild(card);
+    });
+  });
+}
+
+render();
+</script>
+</body>
+</html>
