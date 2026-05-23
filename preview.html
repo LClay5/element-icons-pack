@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Wave Icons Pack — Preview</title>
+<title>Element Icons Pack</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:system-ui,sans-serif;padding:2rem;min-height:100vh;transition:background .3s,color .3s}
@@ -20,11 +21,16 @@ h1{font-size:1.8rem;margin-bottom:.3rem}
 .theme-btn{padding:.5rem 1rem;border:2px solid;border-radius:8px;cursor:pointer;font-weight:600;transition:.15s;background:transparent}
 .theme-btn:hover{transform:translateY(-1px)}
 .theme-btn.active{border-width:3px;box-shadow:0 2px 8px rgba(0,0,0,.15)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:1rem}
-.card{background:rgba(255,255,255,.06);border-radius:10px;padding:1rem;text-align:center;border:1px solid;transition:.2s;backdrop-filter:blur(4px)}
+.dl-all{padding:.5rem 1.2rem;border:none;border-radius:8px;cursor:pointer;font-weight:700;margin-left:auto;transition:.15s}
+.dl-all:hover{transform:translateY(-1px);box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.dl-all:disabled{opacity:.5;cursor:wait}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem}
+.card{background:rgba(255,255,255,.06);border-radius:10px;padding:1rem 1rem .6rem;text-align:center;border:1px solid;transition:.2s;backdrop-filter:blur(4px)}
 .card:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.1)}
 .card svg{width:72px;height:72px;display:block;margin:0 auto}
-.card p{margin-top:.6rem;font-size:.8rem;font-weight:500;opacity:.85}
+.card p{margin-top:.4rem;font-size:.8rem;font-weight:500;opacity:.85}
+.dl-btn{display:inline-block;margin-top:.4rem;padding:3px 10px;border-radius:5px;border:1px solid;font-size:.7rem;cursor:pointer;text-decoration:none;transition:.1s;opacity:.6}
+.dl-btn:hover{opacity:1}
 .element-label{grid-column:1/-1;font-size:1.2rem;font-weight:700;margin-top:.5rem;margin-bottom:.3rem}
 .palette-dots{display:flex;gap:4px;justify-content:center;margin-top:.4rem}
 .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
@@ -33,21 +39,21 @@ h1{font-size:1.8rem;margin-bottom:.3rem}
 <body>
 <h1>🧩 Element Icons Pack</h1>
 <p class="sub">🌊 Water · 🌍 Earth · 💨 Wind · 🔥 Fire · ✨ Ether — 5 elements × 4 seasons × day/night × 10 icons = 400 SVGs</p>
-
 <div class="bar">
   <div class="time-toggle" id="timeToggle"></div>
   <div id="seasonBtns"></div>
+  <button class="dl-all" id="dlAllBtn">⬇ Download All (ZIP)</button>
 </div>
 <div id="themeBtns" class="bar"></div>
 <div class="grid" id="iconGrid"></div>
-
 <script>
 const P = {
-  water:{name:"Water",base:"#0d6efd",spring:{bg:"#e0f4f4",c1:"#0ABDE3",c2:"#40E0D0",c3:"#7FF5E8",accent:"#f7c948"},summer:{bg:"#e8f4f8",c1:"#006994",c2:"#0D6EFD",c3:"#00BFFF",accent:"#FFD700"},fall:{bg:"#e8eef4",c1:"#4A6FA5",c2:"#5F9EA0",c3:"#7DA6C4",accent:"#C4956A"},winter:{bg:"#f0f8ff",c1:"#A8D8EA",c2:"#6CA6CD",c3:"#D4EAF7",accent:"#E0E0E0"}},
-  earth:{name:"Earth",base:"#8B5E3C",spring:{bg:"#f4f1e6",c1:"#8B5E3C",c2:"#4C8C28",c3:"#7CB342",accent:"#FFD93D"},summer:{bg:"#f5eddd",c1:"#8B4513",c2:"#2D5A1E",c3:"#6B8E23",accent:"#FF8C00"},fall:{bg:"#f4e8d8",c1:"#A0522D",c2:"#D2691E",c3:"#B22222",accent:"#FFA500"},winter:{bg:"#f0ede8",c1:"#C4A882",c2:"#9E9E9E",c3:"#B0C4DE",accent:"#D3D3D3"}},
-  wind:{name:"Wind",base:"#4FC3F7",spring:{bg:"#f0faff",c1:"#81D4FA",c2:"#B3E5FC",c3:"#E1F5FE",accent:"#FFFFFF"},summer:{bg:"#e8f4fd",c1:"#4FC3F7",c2:"#0288D1",c3:"#81D4FA",accent:"#FFFFFF"},fall:{bg:"#eceff1",c1:"#78909C",c2:"#90A4AE",c3:"#B0BEC5",accent:"#E0E0E0"},winter:{bg:"#f5fafc",c1:"#B3E5FC",c2:"#E1F5FE",c3:"#F5F5F5",accent:"#ECEFF1"}},
-  fire:{name:"Fire",base:"#FF4500",spring:{bg:"#fff8f0",c1:"#FF8A65",c2:"#FFAB91",c3:"#FFCC80",accent:"#FFD700"},summer:{bg:"#fff5f0",c1:"#D32F2F",c2:"#FF4500",c3:"#FF6B35",accent:"#FFD700"},fall:{bg:"#fce8d5",c1:"#FF6F00",c2:"#D84315",c3:"#B71C1C",accent:"#FFB300"},winter:{bg:"#fcecec",c1:"#EF9A9A",c2:"#E57373",c3:"#FFCDD2",accent:"#F5F5F5"}},
-  ether:{name:"Ether",base:"#9E9E9E",spring:{bg:"#fafafa",c1:"#757575",c2:"#A5D6A7",c3:"#BDBDBD",accent:"#81C784"},summer:{bg:"#FFFFFF",c1:"#212121",c2:"#616161",c3:"#9E9E9E",accent:"#000000"},fall:{bg:"#f5f0eb",c1:"#5D4037",c2:"#8D6E63",c3:"#BCAAA4",accent:"#A1887F"},winter:{bg:"#fcfcfc",c1:"#E0E0E0",c2:"#BDBDBD",c3:"#F5F5F5",accent:"#90CAF9"}}
+  water:{name:"Water",base:"#4169E1",spring:{bg:"#e8f4ff",c1:"#4169E1",c2:"#20B2AA",c3:"#00CED1",accent:"#7FFFD4"},summer:{bg:"#e0ecf8",c1:"#4169E1",c2:"#0055AA",c3:"#FFD700",accent:"#FFA500"},fall:{bg:"#e0e8f0",c1:"#4169E1",c2:"#708090",c3:"#ADD8E6",accent:"#66CDAA"},winter:{bg:"#f0f8ff",c1:"#4169E1",c2:"#A8D8EA",c3:"#B0E0E6",accent:"#FFFFFF"}},
+  earth:{name:"Earth",base:"#8B5E3C",spring:{bg:"#f4efe6",c1:"#8B5E3C",c2:"#C4A882",c3:"#FFD93D",accent:"#7CB342"},summer:{bg:"#f5edd5",c1:"#8B5E3C",c2:"#C88A3D",c3:"#8B3A3A",accent:"#E8A317"},fall:{bg:"#f0e4d0",c1:"#8B5E3C",c2:"#5C3A1E",c3:"#3E2723",accent:"#D2691E"},winter:{bg:"#eeede8",c1:"#8B5E3C",c2:"#9E9E9E",c3:"#C4A882",accent:"#B0C4DE"}},
+  wind:{name:"Wind",base:"#5B9BD5",spring:{bg:"#f0f8ff",c1:"#5B9BD5",c2:"#A8D8EA",c3:"#FFDAB9",accent:"#FFFACD"},summer:{bg:"#e0f0fa",c1:"#5B9BD5",c2:"#0288D1",c3:"#FFFFFF",accent:"#FFE082"},fall:{bg:"#e8eaed",c1:"#5B9BD5",c2:"#78909C",c3:"#546E7A",accent:"#B0BEC5"},winter:{bg:"#f0f5fc",c1:"#5B9BD5",c2:"#B3E5FC",c3:"#E1F5FE",accent:"#FFFFFF"}},
+  fire:{name:"Fire",base:"#D32F2F",spring:{bg:"#fef0f0",c1:"#D32F2F",c2:"#F48FB1",c3:"#F8BBD0",accent:"#CE93D8"},summer:{bg:"#fff0e0",c1:"#D32F2F",c2:"#FF4500",c3:"#FFD700",accent:"#FFA000"},fall:{bg:"#f5e4d0",c1:"#D32F2F",c2:"#BF360C",c3:"#3E2723",accent:"#FF6F00"},winter:{bg:"#f5f0f0",c1:"#FF6B35",c2:"#D32F2F",c3:"#90CAF9",accent:"#F5F5F5"}},
+  ether:{name:"Ether",base:"#78909C",spring:{bg:"#fefef5",c1:"#78909C",c2:"#FFD54F",c3:"#FFF9C4",accent:"#FFC107"},summer:{bg:"#FFFFFF",c1:"#78909C",c2:"#212121",c3:"#FFFFFF",accent:"#000000"},fall:{bg:"#f5f0f5",c1:"#78909C",c2:"#7B1FA2",c3:"#CE93D8",accent:"#4A148C"},winter:{bg:"#f5f7fa",c1:"#78909C",c2:"#B0BEC5",c3:"#ECEFF1",accent:"#CFD8DC"}},
+  _night:{ether:{spring:{bg:"#1a1a10",c1:"#4B5E68",c2:"#b8860b",c3:"#C4B07A",accent:"#8B7300"},summer:{bg:"#0a0a0a",c1:"#4B5E68",c2:"#E0E0E0",c3:"#333333",accent:"#FFFFFF"},fall:{bg:"#4A148C",c1:"#4B5E68",c2:"#3B0A6B",c3:"#6B3A8E",accent:"#f5f0f5"},winter:{bg:"#12161a",c1:"#4B5E68",c2:"#607580",c3:"#3A4A52",accent:"#6B808A"}}}
 };
 const ICONS = ["wave-line","wave-layered","wave-circle","wave-audio","wave-sun","wave-seamless","wave-tsunami","wave-minimal","wave-mountains","wave-spiral"];
 const NAMES = {"wave-line":"Line","wave-layered":"Layered","wave-circle":"Circle","wave-audio":"Audio","wave-sun":"Sun","wave-seamless":"Pattern","wave-tsunami":"Tsunami","wave-minimal":"Minimal","wave-mountains":"Mountains","wave-spiral":"Spiral"};
@@ -55,13 +61,13 @@ const ELEMENTS = ["water","earth","wind","fire","ether"];
 const SEASONS = ["spring","summer","fall","winter"];
 const SICONS = {"spring":"🌸","summer":"☀️","fall":"🍂","winter":"❄️"};
 const SNAME = {"spring":"Spring","summer":"Summer","fall":"Fall","winter":"Winter"};
-
-let currentElem = "water";
-let currentSeason = "spring";
-let currentTime = "day";
-
-function darken(hex,f){let r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return"#"+[r,g,b].map(c=>Math.max(0,Math.min(255,Math.round(c*f))).toString(16).padStart(2,"0")).join("")}
+let currentElem = "water", currentSeason = "spring", currentTime = "day";
+function darken(h,f){let r=parseInt(h.slice(1,3),16),g=parseInt(h.slice(3,5),16),b=parseInt(h.slice(5,7),16);return"#"+[r,g,b].map(c=>Math.max(0,Math.min(255,Math.round(c*f))).toString(16).padStart(2,"0")).join("")}
 function nightColors(d){return{bg:darken(d.bg,.08),c1:darken(d.c1,.6),c2:darken(d.c2,.5),c3:darken(d.c3,.4),accent:darken(d.accent,.85)}}
+function getColors(){let d=P[currentElem][currentSeason];return currentTime==="night"?(P._night[currentElem]?.[currentSeason]||nightColors(d)):d}
+function themePath(){return `dist/${currentElem}-${currentSeason}-${currentTime}`}
+
+function downloadSVG(name,svg){let b=new Blob([svg],{type:"image/svg+xml"}),a=document.createElement("a");a.href=URL.createObjectURL(b);a.download=name+".svg";a.click();URL.revokeObjectURL(a.href)}
 
 function setupToggles(){
   const tt=document.getElementById("timeToggle");
@@ -71,7 +77,6 @@ function setupToggles(){
     b.onclick=()=>{document.querySelectorAll(".time-btn").forEach(x=>{x.classList.remove("active");x.style.background="";x.style.color="#999";x.style.borderColor="#999"});b.classList.add("active");b.style.background="#333";b.style.color="#fff";b.style.borderColor="#333";currentTime=t;render()};
     tt.appendChild(b);
   });
-
   const sb=document.getElementById("seasonBtns");
   SEASONS.forEach(s=>{
     let b=document.createElement("button");b.className="season-btn"+(s===currentSeason?" active":"");
@@ -80,7 +85,6 @@ function setupToggles(){
     b.onclick=()=>{document.querySelectorAll(".season-btn").forEach(x=>{x.classList.remove("active");x.style.background="";x.style.color=P[currentElem].base});b.classList.add("active");b.style.background=P[currentElem].base;b.style.color="#fff";currentSeason=s;render()};
     sb.appendChild(b);
   });
-
   const tb=document.getElementById("themeBtns");
   ELEMENTS.forEach(e=>{
     let b=document.createElement("button");b.className="theme-btn"+(e===currentElem?" active":"");b.textContent=P[e].name;
@@ -89,33 +93,45 @@ function setupToggles(){
     b.onclick=()=>{document.querySelectorAll(".theme-btn").forEach(x=>{x.classList.remove("active");x.style.background="";x.style.color=""});document.querySelectorAll(".season-btn").forEach(x=>{x.style.borderColor=P[e].base;x.style.color=P[e].base;if(x.classList.contains("active")){x.style.background=P[e].base;x.style.color="#fff"}});b.classList.add("active");b.style.background=P[e].base;b.style.color="#fff";currentElem=e;render()};
     tb.appendChild(b);
   });
+  document.getElementById("dlAllBtn").onclick=downloadAll;
+}
+
+async function downloadAll(){
+  const btn=document.getElementById("dlAllBtn");btn.disabled=true;btn.textContent="⏳ Zipping...";
+  const zip=new JSZip(),path=themePath();
+  let fetches=ICONS.map(async icon=>{
+    let r=await fetch(`${path}/${icon}.svg`),svg=await r.text();
+    zip.file(`${icon}.svg`,svg);
+  });
+  await Promise.all(fetches);
+  let blob=await zip.generateAsync({type:"blob"}),a=document.createElement("a");
+  a.href=URL.createObjectURL(blob);a.download=`${currentElem}-${currentSeason}-${currentTime}.zip`;a.click();
+  URL.revokeObjectURL(a.href);btn.disabled=false;btn.textContent="⬇ Download All (ZIP)";
 }
 
 function render(){
-  const grid=document.getElementById("iconGrid");
-  const dayColors=P[currentElem][currentSeason];
-  const colors=currentTime==="night"?nightColors(dayColors):dayColors;
+  const grid=document.getElementById("iconGrid"),colors=getColors(),path=themePath();
   document.body.style.background=colors.bg;
-  const isLight=["spring","summer","winter"].includes(currentSeason)&&currentTime==="day";
-  document.body.style.color=isLight||currentElem==="ether"&&currentTime==="day"?"#222":"#eee";
-  const cardBg=isLight||currentElem==="ether"&&currentTime==="day"?"rgba(0,0,0,.03)":"rgba(255,255,255,.06)";
+  const isLight=currentTime==="day"&&(currentElem!=="ether"||currentSeason!=="summer")&&currentSeason!=="fall";
+  document.body.style.color=isLight?"#222":"#eee";
+  const cardBg=isLight?"rgba(0,0,0,.03)":"rgba(255,255,255,.06)";
   const cardBorder=isLight?"rgba(0,0,0,.08)":"rgba(255,255,255,.1)";
+  const dlClr=isLight?"#333":"#eee";
   const timeLabel=currentTime==="day"?"☀️ Day":"🌙 Night";
-
   grid.innerHTML=`<div class="element-label" style="color:${P[currentElem].base}">${P[currentElem].name} — ${SICONS[currentSeason]} ${SNAME[currentSeason]} ${timeLabel}</div>`;
-
   ICONS.forEach(icon=>{
-    fetch(`dist/${currentElem}-${currentSeason}-${currentTime}/${icon}.svg`).then(r=>r.text()).then(svg=>{
+    fetch(`${path}/${icon}.svg`).then(r=>r.text()).then(svg=>{
       let card=document.createElement("div");card.className="card";card.style.background=cardBg;card.style.borderColor=cardBorder;
       card.innerHTML=svg+`<p>${NAMES[icon]}</p>`;
+      let dl=document.createElement("a");dl.className="dl-btn";dl.textContent="⬇ SVG";dl.style.borderColor=dlClr;dl.style.color=dlClr;
+      dl.onclick=e=>{e.stopPropagation();downloadSVG(icon,svg)};
+      card.appendChild(dl);
       if(icon==="wave-seamless"){let d=document.createElement("div");d.className="palette-dots";[colors.c1,colors.c2,colors.c3,colors.accent].forEach(c=>{let s=document.createElement("span");s.className="dot";s.style.background=c;d.appendChild(s)});card.appendChild(d)}
       grid.appendChild(card);
     });
   });
 }
-
-setupToggles();
-render();
+setupToggles();render();
 </script>
 </body>
 </html>
