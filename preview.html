@@ -34,6 +34,11 @@ h1{font-size:1.8rem;margin-bottom:.3rem}
 .element-label{grid-column:1/-1;font-size:1.2rem;font-weight:700;margin-top:.5rem;margin-bottom:.3rem}
 .palette-dots{display:flex;gap:4px;justify-content:center;margin-top:.4rem}
 .dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.1)}
+.show-all-btn{padding:.5rem 1rem;border:2px solid #666;border-radius:8px;cursor:pointer;font-weight:700;background:transparent;color:#666;transition:.15s}
+.show-all-btn:hover{background:#666;color:#fff}
+.show-all-btn.active{background:#333;color:#fff;border-color:#333}
+.all-section{margin-bottom:1.5rem}
+.all-section h2{padding:.5rem 0;font-size:1.1rem;border-bottom:2px solid;margin-bottom:.5rem}
 </style>
 </head>
 <body>
@@ -43,9 +48,11 @@ h1{font-size:1.8rem;margin-bottom:.3rem}
   <div class="time-toggle" id="timeToggle"></div>
   <div id="seasonBtns"></div>
   <button class="dl-all" id="dlAllBtn">⬇ Download All (ZIP)</button>
+  <button class="show-all-btn" id="showAllBtn">🔲 Show All</button>
 </div>
 <div id="themeBtns" class="bar"></div>
 <div class="grid" id="iconGrid"></div>
+<div id="allView" style="display:none"></div>
 <script>
 const P = {
   water:{name:"Water",base:"#4169E1",spring:{bg:"#e8f4ff",c1:"#4169E1",c2:"#20B2AA",c3:"#00CED1",accent:"#7FFFD4"},summer:{bg:"#e0ecf8",c1:"#4169E1",c2:"#0055AA",c3:"#FFD700",accent:"#FFA500"},fall:{bg:"#e0e8f0",c1:"#4169E1",c2:"#708090",c3:"#ADD8E6",accent:"#66CDAA"},winter:{bg:"#f0f8ff",c1:"#4169E1",c2:"#A8D8EA",c3:"#B0E0E6",accent:"#FFFFFF"}},
@@ -94,6 +101,46 @@ function setupToggles(){
     tb.appendChild(b);
   });
   document.getElementById("dlAllBtn").onclick=downloadAll;
+  document.getElementById("showAllBtn").onclick=toggleAll;
+}
+
+let showingAll=false;
+
+function toggleAll(){
+  showingAll=!showingAll;
+  const btn=document.getElementById("showAllBtn");
+  const grid=document.getElementById("iconGrid");
+  const allView=document.getElementById("allView");
+  btn.textContent=showingAll?"🔲 Hide All":"🔲 Show All";
+  btn.classList.toggle("active");
+  grid.style.display=showingAll?"none":"";
+  allView.style.display=showingAll?"":"none";
+  if(showingAll) renderAll();
+}
+
+async function renderAll(){
+  const allView=document.getElementById("allView");
+  allView.innerHTML="<p style='opacity:.6;padding:2rem'>Loading all themes...</p>";
+  let html="";
+  for(const elem of ELEMENTS){
+    html+=`<div class="all-section"><h2 style="color:${P[elem].base}">${P[elem].name}</h2>`;
+    for(const season of SEASONS){
+      for(const time of["day","night"]){
+        let colors=time==="night"?(P._night[elem]?.[season]||nightColors(P[elem][season])):P[elem][season];
+        html+=`<div style="display:inline-flex;flex-direction:column;align-items:center;margin:0 4px 8px;width:62px;font-size:.6rem;padding:4px;border-radius:4px;background:${colors.bg};border:1px solid rgba(0,0,0,.08)">
+          <span style="opacity:.5;margin-bottom:2px">${SICONS[season]}${time==="day"?"☀️":"🌙"}</span>`;
+        for(const icon of ICONS.slice(0,5)){
+          try{
+            let r=await fetch(`dist/${elem}-${season}-${time}/${icon}.svg`),svg=await r.text();
+            html+=svg.replace('<svg','<svg style="width:20px;height:20px"');
+          }catch(e){}
+        }
+        html+=`</div>`;
+      }
+    }
+    html+=`</div>`;
+  }
+  allView.innerHTML=html;
 }
 
 async function downloadAll(){
