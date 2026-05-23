@@ -1,6 +1,7 @@
 # Element Icons Pack
 
-10 wave-themed SVG icons in **5 elements × 4 seasons × day/night** = 400 SVGs.
+400 decorative wave SVG graphics — **5 elements × 4 seasons × day/night**.  
+Use as design accents, section dividers, backgrounds, badges, seamless patterns, or decorative flourishes on websites, presentations, merch, and more.
 
 🌊 Water · 🌍 Earth · 💨 Wind · 🔥 Fire · ✨ Ether
 
