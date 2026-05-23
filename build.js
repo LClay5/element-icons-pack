@@ -43,8 +43,9 @@ const svgFiles = fs.readdirSync(srcDir).filter(f => f.endsWith('.svg'));
 const allThemes = [];
 
 for (const [elem, elemData] of Object.entries(palettes)) {
+  const customNights = elemData.night || {};
   for (const [season, dayColors] of Object.entries(elemData)) {
-    if (season === 'name' || season === 'base') continue;
+    if (season === 'name' || season === 'base' || season === 'night') continue;
 
     const dayDir = path.join(distDir, `${elem}-${season}-day`);
     const nightDir = path.join(distDir, `${elem}-${season}-night`);
@@ -52,7 +53,8 @@ for (const [elem, elemData] of Object.entries(palettes)) {
     fs.mkdirSync(nightDir, { recursive: true });
 
     writeThemedSVGs(dayDir, dayColors, svgFiles);
-    writeThemedSVGs(nightDir, nightPalette(dayColors), svgFiles);
+    const nightColors = customNights[season] || nightPalette(dayColors);
+    writeThemedSVGs(nightDir, nightColors, svgFiles);
 
     allThemes.push({ key: `${elem}-${season}-day`, element: elem, season, time: 'day',
       label: `${elemData.name} ${dayColors.name} ☀️` });

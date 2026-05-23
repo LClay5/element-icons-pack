@@ -1,38 +1,38 @@
 {
   "water": {
     "name": "Water",
-    "base": "#0d6efd",
+    "base": "#4169E1",
     "spring": {
       "name": "Spring",
-      "bg": "#e0f4f4",
-      "c1": "#0ABDE3",
-      "c2": "#40E0D0",
-      "c3": "#7FF5E8",
-      "accent": "#f7c948"
+      "bg": "#e8f4ff",
+      "c1": "#4169E1",
+      "c2": "#20B2AA",
+      "c3": "#00CED1",
+      "accent": "#7FFFD4"
     },
     "summer": {
       "name": "Summer",
-      "bg": "#e8f4f8",
-      "c1": "#006994",
-      "c2": "#0D6EFD",
-      "c3": "#00BFFF",
-      "accent": "#FFD700"
+      "bg": "#e0ecf8",
+      "c1": "#4169E1",
+        "c2": "#0055AA",
+      "c3": "#FFD700",
+      "accent": "#FFA500"
     },
     "fall": {
       "name": "Fall",
-      "bg": "#e8eef4",
-      "c1": "#4A6FA5",
-      "c2": "#5F9EA0",
-      "c3": "#7DA6C4",
-      "accent": "#C4956A"
+      "bg": "#e0e8f0",
+      "c1": "#4169E1",
+      "c2": "#708090",
+      "c3": "#ADD8E6",
+      "accent": "#66CDAA"
     },
     "winter": {
       "name": "Winter",
       "bg": "#f0f8ff",
-      "c1": "#A8D8EA",
-      "c2": "#6CA6CD",
-      "c3": "#D4EAF7",
-      "accent": "#E0E0E0"
+      "c1": "#4169E1",
+      "c2": "#A8D8EA",
+      "c3": "#B0E0E6",
+      "accent": "#FFFFFF"
     }
   },
   "earth": {
@@ -40,143 +40,173 @@
     "base": "#8B5E3C",
     "spring": {
       "name": "Spring",
-      "bg": "#f4f1e6",
+      "bg": "#f4efe6",
       "c1": "#8B5E3C",
-      "c2": "#4C8C28",
-      "c3": "#7CB342",
-      "accent": "#FFD93D"
+      "c2": "#C4A882",
+      "c3": "#FFD93D",
+      "accent": "#7CB342"
     },
     "summer": {
       "name": "Summer",
-      "bg": "#f5eddd",
-      "c1": "#8B4513",
-      "c2": "#2D5A1E",
-      "c3": "#6B8E23",
-      "accent": "#FF8C00"
+      "bg": "#f5edd5",
+      "c1": "#8B5E3C",
+      "c2": "#C88A3D",
+      "c3": "#8B3A3A",
+      "accent": "#E8A317"
     },
     "fall": {
       "name": "Fall",
-      "bg": "#f4e8d8",
-      "c1": "#A0522D",
-      "c2": "#D2691E",
-      "c3": "#B22222",
-      "accent": "#FFA500"
+      "bg": "#f0e4d0",
+      "c1": "#8B5E3C",
+      "c2": "#5C3A1E",
+      "c3": "#3E2723",
+      "accent": "#D2691E"
     },
     "winter": {
       "name": "Winter",
-      "bg": "#f0ede8",
-      "c1": "#C4A882",
+      "bg": "#eeede8",
+      "c1": "#8B5E3C",
       "c2": "#9E9E9E",
-      "c3": "#B0C4DE",
-      "accent": "#D3D3D3"
+      "c3": "#C4A882",
+      "accent": "#B0C4DE"
     }
   },
   "wind": {
     "name": "Wind",
-    "base": "#4FC3F7",
+    "base": "#5B9BD5",
     "spring": {
       "name": "Spring",
-      "bg": "#f0faff",
-      "c1": "#81D4FA",
-      "c2": "#B3E5FC",
-      "c3": "#E1F5FE",
-      "accent": "#FFFFFF"
+      "bg": "#f0f8ff",
+      "c1": "#5B9BD5",
+      "c2": "#A8D8EA",
+      "c3": "#FFDAB9",
+      "accent": "#FFFACD"
     },
     "summer": {
       "name": "Summer",
-      "bg": "#e8f4fd",
-      "c1": "#4FC3F7",
+      "bg": "#e0f0fa",
+      "c1": "#5B9BD5",
       "c2": "#0288D1",
-      "c3": "#81D4FA",
-      "accent": "#FFFFFF"
+      "c3": "#FFFFFF",
+      "accent": "#FFE082"
     },
     "fall": {
       "name": "Fall",
-      "bg": "#eceff1",
-      "c1": "#78909C",
-      "c2": "#90A4AE",
-      "c3": "#B0BEC5",
-      "accent": "#E0E0E0"
+      "bg": "#e8eaed",
+      "c1": "#5B9BD5",
+      "c2": "#78909C",
+      "c3": "#546E7A",
+      "accent": "#B0BEC5"
     },
     "winter": {
       "name": "Winter",
-      "bg": "#f5fafc",
-      "c1": "#B3E5FC",
-      "c2": "#E1F5FE",
-      "c3": "#F5F5F5",
-      "accent": "#ECEFF1"
+      "bg": "#f0f5fc",
+      "c1": "#5B9BD5",
+      "c2": "#B3E5FC",
+      "c3": "#E1F5FE",
+      "accent": "#FFFFFF"
     }
   },
   "fire": {
     "name": "Fire",
-    "base": "#FF4500",
+    "base": "#D32F2F",
     "spring": {
       "name": "Spring",
-      "bg": "#fff8f0",
-      "c1": "#FF8A65",
-      "c2": "#FFAB91",
-      "c3": "#FFCC80",
-      "accent": "#FFD700"
+      "bg": "#fef0f0",
+      "c1": "#D32F2F",
+      "c2": "#F48FB1",
+      "c3": "#F8BBD0",
+      "accent": "#CE93D8"
     },
     "summer": {
       "name": "Summer",
-      "bg": "#fff5f0",
+      "bg": "#fff0e0",
       "c1": "#D32F2F",
       "c2": "#FF4500",
-      "c3": "#FF6B35",
-      "accent": "#FFD700"
+      "c3": "#FFD700",
+      "accent": "#FFA000"
     },
     "fall": {
       "name": "Fall",
-      "bg": "#fce8d5",
-      "c1": "#FF6F00",
-      "c2": "#D84315",
-      "c3": "#B71C1C",
-      "accent": "#FFB300"
+      "bg": "#f5e4d0",
+      "c1": "#D32F2F",
+      "c2": "#BF360C",
+      "c3": "#3E2723",
+      "accent": "#FF6F00"
     },
     "winter": {
       "name": "Winter",
-      "bg": "#fcecec",
-      "c1": "#EF9A9A",
-      "c2": "#E57373",
-      "c3": "#FFCDD2",
+      "bg": "#f5f0f0",
+      "c1": "#FF6B35",
+      "c2": "#D32F2F",
+      "c3": "#90CAF9",
       "accent": "#F5F5F5"
     }
   },
   "ether": {
     "name": "Ether",
-    "base": "#9E9E9E",
+    "base": "#78909C",
     "spring": {
       "name": "Spring",
-      "bg": "#fafafa",
-      "c1": "#757575",
-      "c2": "#A5D6A7",
-      "c3": "#BDBDBD",
-      "accent": "#81C784"
+      "bg": "#fefef5",
+      "c1": "#78909C",
+      "c2": "#FFD54F",
+      "c3": "#FFF9C4",
+      "accent": "#FFC107"
     },
     "summer": {
       "name": "Summer",
       "bg": "#FFFFFF",
-      "c1": "#212121",
-      "c2": "#616161",
-      "c3": "#9E9E9E",
+      "c1": "#78909C",
+      "c2": "#212121",
+      "c3": "#FFFFFF",
       "accent": "#000000"
     },
     "fall": {
       "name": "Fall",
-      "bg": "#f5f0eb",
-      "c1": "#5D4037",
-      "c2": "#8D6E63",
-      "c3": "#BCAAA4",
-      "accent": "#A1887F"
+      "bg": "#f5f0f5",
+      "c1": "#78909C",
+      "c2": "#7B1FA2",
+      "c3": "#CE93D8",
+      "accent": "#4A148C"
     },
     "winter": {
       "name": "Winter",
-      "bg": "#fcfcfc",
-      "c1": "#E0E0E0",
-      "c2": "#BDBDBD",
-      "c3": "#F5F5F5",
-      "accent": "#90CAF9"
+      "bg": "#f5f7fa",
+      "c1": "#78909C",
+      "c2": "#B0BEC5",
+      "c3": "#ECEFF1",
+      "accent": "#CFD8DC"
+    },
+    "night": {
+      "spring": {
+        "bg": "#1a1a10",
+        "c1": "#4B5E68",
+        "c2": "#b8860b",
+        "c3": "#C4B07A",
+        "accent": "#8B7300"
+      },
+      "summer": {
+        "bg": "#0a0a0a",
+        "c1": "#4B5E68",
+        "c2": "#E0E0E0",
+        "c3": "#333333",
+        "accent": "#FFFFFF"
+      },
+      "fall": {
+        "bg": "#4A148C",
+        "c1": "#4B5E68",
+        "c2": "#3B0A6B",
+        "c3": "#6B3A8E",
+        "accent": "#f5f0f5"
+      },
+      "winter": {
+        "bg": "#12161a",
+        "c1": "#4B5E68",
+        "c2": "#607580",
+        "c3": "#3A4A52",
+        "accent": "#6B808A"
+      }
     }
   }
 }
